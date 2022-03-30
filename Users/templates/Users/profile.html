@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="profile-page">
+
+    <h3>Welcome {{a.username}}</h3>
+    <strong><hr></strong>
+    <p>Firstname: {{a.first_name}}</p>
+    <hr>
+    <p>Lastname: {{a.last_name}}</p>
+    <hr>
+    <p>Email: {{a.email}}</p>
+    <hr>
+    <p>No of Jottinga: </p>
+    <hr>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="jotter-container">
+    {% for i in a %}
+    <div class="jotter-head">
+        {{i.title}}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

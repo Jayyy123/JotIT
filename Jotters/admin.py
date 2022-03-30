@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from Jotters.models import Jotter
+
+admin.site.register(Jotter)
