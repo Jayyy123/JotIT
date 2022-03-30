@@ -4,10 +4,20 @@
 {% block content %}
 
 <div class="jotter-container">
+    <hr class="hr">
     {% for i in a %}
     <div class="jotter-head">
         {{i.title}}
     </div>
+    <hr>
+    <div class="jotter-head">
+        {{i.snippet}}
+    </div>
+    <hr>
+    <div class="jotter-head">
+        {{i.detail}}
+    </div>
+    <hr class="hr">
     {% endfor %}
 </div>
 

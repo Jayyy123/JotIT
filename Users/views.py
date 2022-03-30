@@ -3,14 +3,13 @@ from django.shortcuts import redirect, render
 from .forms import UserForm,UserProfile,User, UserProfileform
 from django.contrib.auth import login,logout,authenticate
 
-
 def loginPage(request):
     if request.user.is_authenticated:
         return redirect('home')
 
     if request.method == 'POST':
         username = request.POST['username']
-        password = request.POST['username']
+        password = request.POST['password']
 
         try:
             user = User.objects.get(username=username)

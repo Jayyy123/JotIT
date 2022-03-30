@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Base.urls')),
-    path('', include('Jotters.urls')),
+    path('jotters/', include('Jotters.urls')),
     path('users/', include('Users.urls')),
     path('jotterapi/v1/', include('JotterApi.urls')),
 ]

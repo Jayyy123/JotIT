@@ -1,17 +1,18 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from .forms import Jotter,Addjotter
+from django.contrib.auth.models import User
+from Users.models import UserProfile
 
 
 
 def jotters(request):
     if request.user.is_authenticated:
-        user = request.user
-        jotters = Jotter.objects.get(owner=user)
+        jotters = Jotter.objects.all()
     else:
         return redirect('login')
 
-    return render(request,'Jotters/home.html',{'a':jotters})
+    return render(request,'Jotters/jotters.html',{'a':jotters})
 
 def add_jotters(request):
     if request.user.is_authenticated:
@@ -27,7 +28,7 @@ def add_jotters(request):
     else:
         return redirect('login')
     
-    return render(request,'Jotters/add_jotters.html')
+    return render(request,'Jotters/add_jotter.html',{'a':newJotter})
 
 def edit_jotters(request,pk):
     if request.user.is_authenticated:

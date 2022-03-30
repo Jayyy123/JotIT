@@ -6,7 +6,6 @@ from Users.models import UserProfile
 
 
 class Jotter(models.Model):
-    owner = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, blank=False, null=False, default='JotIT')
     snippet = models.CharField(max_length=200, blank=False, null=False, default='JotIT')
     detail = models.TextField(blank=False, null=False, default='JotIT')

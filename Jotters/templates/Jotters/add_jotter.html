@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<form method="post" class="newjotter">
+{% csrf_token %}
+    {{a.as_p}}
+    <input type="submit" value="Add" class="add-button">
+</form>
+
+{% endblock %}
