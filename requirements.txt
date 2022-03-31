@@ -20,6 +20,7 @@ entrypoints @ file:///home/conda/feedstock_root/build_artifacts/entrypoints_1605
 filelock==3.4.0
 gunicorn==20.1.0
 idna==3.3
+importlib-metadata @ file:///Users/runner/miniforge3/conda-bld/importlib-metadata_1639976188178/work
 importlib-resources @ file:///home/conda/feedstock_root/build_artifacts/importlib_resources_1635615662634/work
 ipykernel @ file:///Users/runner/miniforge3/conda-bld/ipykernel_1638555527013/work/dist/ipykernel-6.6.0-py3-none-any.whl
 ipython @ file:///Users/runner/miniforge3/conda-bld/ipython_1638470588570/work
