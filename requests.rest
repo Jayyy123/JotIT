@@ -1,0 +1,39 @@
+GET http://127.0.0.1:8000/jotterapi/v1/jotters
+
+### 
+POST http://127.0.0.1:8000/jotterapi/v1/user-login/
+Content-Type: application/json
+
+{
+    "username": "joey",
+    "password": "fire123"
+}
+
+### 
+GET http://127.0.0.1:8000/jotterapi/v1/get-user/
+Content-Type: application/json
+Authorization: Token 6aae0bef01cc83fbc0cf1283b875c59583fdc950811ab5912f9777ccf1ae947a
+# 5bc80bec223587a2d7b76ea048e1b7339f11801bd8379b64fd29ac90bf1b994b
+
+### 
+POST http://127.0.0.1:8000/jotterapi/v1/user-signup/
+Content-Type: application/json
+
+{
+    "username":"joey",
+    "first_name":"joseph",
+    "last_name":"Ofili",
+    "email":"joey@gmail.com",
+    "password":"fire123"
+}
+# {
+#   "user_info": {
+#     "id": 5,
+#     "username": "joey",
+#     "firstname": "joseph",
+#     "lastname": "Ofili",
+#     "email": "joey@gmail.com",
+#     "pass": "fire123"
+#   },
+#   "token": "6aae0bef01cc83fbc0cf1283b875c59583fdc950811ab5912f9777ccf1ae947a"
+# }

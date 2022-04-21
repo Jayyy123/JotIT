@@ -3,7 +3,9 @@ from . import views
 
 urlpatterns = [
     path('', views.api_overview, name='overview'),
-    # path('user-login/', views.user-login, name='user-login'),
+    path('user-login/', views.user_login, name='user-login'),
+    path('get-user/', views.get_user, name='get-user'),
+    path('user-signup/', views.user_signup, name='user-signup'),
     # path('user-signup/', views.user-signup, name='user-signup'),
     # path('user-logout/', views.user-logout, name='user-logout'),
     # path('user-profile/', views.user-profile, name='user-profile'),

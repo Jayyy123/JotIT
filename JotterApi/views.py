@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import JotterSerializer,Jotter
+from .serializers import JotterSerializer,Jotter,UserSerializer
 from rest_framework import status
+from rest_framework.authtoken.serializers import AuthTokenSerializer
+from knox.auth import AuthToken
+
 
     # links = {
     #     'users':{
@@ -29,8 +32,8 @@ def api_overview(request):
     links = {
         'all links': 'http://127.0.0.1:8000/jotterapi/v1/',
         'users':{
-            'login':'',
-            'signup':'',
+            'login':'http://127.0.0.1:8000/jotterapi/v1/user-login/',
+            'signup':'http://127.0.0.1:8000/userapi/v1/signup/',
             'logout':'',
             'profile':'',
             'createProfile':'',
@@ -90,3 +93,59 @@ def delete_jotter(request,pk):
 
 # User Api
 
+@api_view(['POST'])
+def user_login(request):
+    serializer = AuthTokenSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    user = serializer.validated_data['user']
+    _,token = AuthToken.objects.create(user)
+
+    return Response({
+        'user_info': {
+            'id': user.id,
+            'username':user.username,
+            'firstname':user.first_name,
+            'lastname':user.last_name,
+            'email': user.email,
+        },
+        'token': token
+    })
+
+@api_view(['GET'])
+def get_user(request):
+    user = request.user
+
+    if user.is_authenticated:
+        return Response({
+            "user_info":{
+                "id":user.id,
+                "username":user.username,
+                "first_name":user.first_name,
+                "last_name":user.last_name,
+                "email":user.email
+            }
+        })
+    
+    return Response({"error":"you do not have access to this account"},status=400)
+
+
+@api_view(['POST'])
+def user_signup(request):
+    serializer = UserSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+
+    user = serializer.save()
+
+    _,token = AuthToken.objects.create(user)
+
+    return Response({
+        'user_info': {
+            'id': user.id,
+            'username':user.username,
+            'firstname':user.first_name,
+            'lastname':user.last_name,
+            'email': user.email,
+            'pass':user.password
+        },
+        'token': token
+    })
